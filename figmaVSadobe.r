@@ -1,5 +1,5 @@
-og_DATA <- read.csv2("FA_DATA.csv")
-DATA <- read.csv2("FA_DATA.csv")
+# og_DATA <- read.csv2("FA_DATA.csv")
+DATA <- read.csv2("FA_DATA_DEF.csv")
 
 toBeReversed <- c(FALSE, FALSE, TRUE, TRUE, TRUE,
                   FALSE, FALSE, FALSE, TRUE, TRUE,
@@ -33,7 +33,7 @@ perspicuity_col <- c(2, 4, 13, 21)
 efficiency_col <- c(9, 20, 22, 23)
 dependability_col <- c(8, 11, 17, 19)
 stimulation_col <- c(5, 6, 7, 18)
-novelty_col <- c(3, 10, 15, 25)
+novelty_col <- c(3, 10, 15, 26)
 
 
 # Figma means for every user
