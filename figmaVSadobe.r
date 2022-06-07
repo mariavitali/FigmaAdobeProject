@@ -1,5 +1,5 @@
 # og_DATA <- read.csv2("FA_DATA.csv")
-DATA <- read.csv2("FA_DATA_DEF.csv")
+DATA <- read.csv2("FA_DATA.csv")
 
 toBeReversed <- c(FALSE, FALSE, TRUE, TRUE, TRUE,
                   FALSE, FALSE, FALSE, TRUE, TRUE,
