@@ -104,6 +104,41 @@ a_sharing_users <- apply(DATA[, shar_col + 68], 1, sum) / 12
 
 
 
+###################################### T-TEST UEQ ##########################################
+
+#Paired t test for Attractiveness
+t.test(f_attractiveness_users, a_attractiveness_users, paired = TRUE)
+
+#Paired t test for Perspicuity
+t.test(f_perspicuity_users, a_perspicuity_users, paired = TRUE)
+
+#Paired t test for Efficiency
+t.test(f_efficiency_users, a_efficiency_users, paired = TRUE)
+
+#Paired t test for Dependability
+t.test(f_dependability_users, a_dependability_users, paired = TRUE)
+
+#Paired t test for Stimulation
+t.test(f_stimulation_users, a_stimulation_users, paired = TRUE)
+
+#Paired t test for Novelty
+t.test(f_novelty_users, a_novelty_users, paired = TRUE)
+
+
+
+###################################### T-TEST UMUX Lite ##########################################
+
+#Paired t test for Collaboration
+t.test(f_collaboration_users, a_collaboration_users, paired = TRUE)
+
+#Paired t test for Plugin
+t.test(f_plugin_users, a_plugin_users, paired = TRUE)
+
+#Paired t test for Sharing
+t.test(f_sharing_users, a_sharing_users, paired = TRUE)
+
+
+
 
 
 #################################### Demographics #########################################
@@ -114,4 +149,6 @@ gender_percentage= round(100*table(as.factor(DATA$Gender))/sum(table(as.factor(D
 
 gender_label = paste(as.factor(DATA$Gender)," (", gender_percentage,"%)", sep = "")
 
+# quartz()
+# window()
 pie(table(as.factor(DATA$Gender)), labels=gender_label)
