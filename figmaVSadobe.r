@@ -225,12 +225,17 @@ boxplot(UMUX, names = c("F_Collab","A_Collab","F_Plugin","A_Plugin","F_Sharing",
 
 #################################### Demographics #########################################
 
+table(DATA$Gender)
+table(DATA$Age)
+table(DATA$State)
+table(DATA$Status)
+
 # convert into nominal variable -> as.factor(DATA$Gender)
 # print gender demographics
-gender_percentage= round(100*table(as.factor(DATA$Gender))/sum(table(as.factor(DATA$Gender))), digits = 1)
+# gender_percentage= round(100*table(as.factor(DATA$Gender))/sum(table(as.factor(DATA$Gender))), digits = 1)
 
-gender_label = paste(as.factor(DATA$Gender)," (", gender_percentage,"%)", sep = "")
+# gender_label = paste(as.factor(DATA$Gender)," (", gender_percentage,"%)", sep = "")
 
 # quartz()
 # window()
-pie(table(as.factor(DATA$Gender)), labels=gender_label)
+# pie(table(as.factor(DATA$Gender)), labels=gender_label)
