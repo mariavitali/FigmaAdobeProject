@@ -18,7 +18,7 @@ for (i in c(1:26)){
         DATA[, i + 10] <- 4 - DATA[, i + 10];
         # Adobe XD items
         DATA[, i + 36] <- 4 - DATA[, i + 36];
-    } else{
+    } else {
         # Figma items
         DATA[, i + 10] <- DATA[, i + 10] - 4;
         # Adobe XD items
@@ -92,51 +92,133 @@ coll_col <- c(1,2)
 plug_col <- c(3,4)
 shar_col <- c(5,6)
 
+
 # Figma sum for every user
 f_collaboration_users <- apply(DATA[, coll_col + 62], 1, sum) / 12
 f_plugin_users <- apply(DATA[, plug_col + 62], 1, sum) / 12
 f_sharing_users <- apply(DATA[, shar_col + 62], 1, sum) / 12
+
+# Figma mean for every UMUX Lite
+f_collaboration_mean = mean(f_collaboration_users, na.rm= TRUE)
+f_plugin_mean = mean(f_plugin_users, na.rm= TRUE)
+f_sharing_mean = mean(f_sharing_users, na.rm= TRUE)
+
 
 # Adobe sum for every user
 a_collaboration_users <- apply(DATA[, coll_col + 68], 1, sum) / 12
 a_plugin_users <- apply(DATA[, plug_col + 68], 1, sum) / 12
 a_sharing_users <- apply(DATA[, shar_col + 68], 1, sum) / 12
 
+# Adobe mean for every UMUX Lite
+a_collaboration_mean = mean(a_collaboration_users, na.rm= TRUE)
+a_plugin_mean = mean(a_plugin_users, na.rm= TRUE)
+a_sharing_mean = mean(a_sharing_users, na.rm= TRUE)
 
 
 ###################################### T-TEST UEQ ##########################################
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Attractiveness
+round(f_attractiveness_mean, digits = 2) 
+round(a_attractiveness_mean, digits = 2) 
 t.test(f_attractiveness_users, a_attractiveness_users, paired = TRUE)
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Perspicuity
+round(f_perspicuity_mean, digits = 2) 
+round(a_perspicuity_mean, digits = 2) 
 t.test(f_perspicuity_users, a_perspicuity_users, paired = TRUE)
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Efficiency
+round (f_efficiency_mean, digits = 2)
+round (a_efficiency_mean, digits = 2)
 t.test(f_efficiency_users, a_efficiency_users, paired = TRUE)
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Dependability
+round (f_dependability_mean, digits = 2)
+round(a_dependability_mean, digits = 2)
 t.test(f_dependability_users, a_dependability_users, paired = TRUE)
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Stimulation
+round(f_stimulation_mean, digits = 2)
+round(a_stimulation_mean, digits = 2)
 t.test(f_stimulation_users, a_stimulation_users, paired = TRUE)
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Novelty
+round(f_novelty_mean, digits = 2)
+round(a_novelty_mean, digits = 2)
 t.test(f_novelty_users, a_novelty_users, paired = TRUE)
-
 
 
 ###################################### T-TEST UMUX Lite ##########################################
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Collaboration
+round(f_collaboration_mean, digits = 2) 
+round(a_collaboration_mean, digits = 2) 
 t.test(f_collaboration_users, a_collaboration_users, paired = TRUE)
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Plugin
+round(f_plugin_mean, digits = 2)
+round(a_plugin_mean, digits = 2)
 t.test(f_plugin_users, a_plugin_users, paired = TRUE)
 
+#get Figma sample mean for comparison
+#get Adobe XD sample mean for comparison
 #Paired t test for Sharing
+round(f_sharing_mean, digits = 2)
+round(a_sharing_mean, digits = 2)
 t.test(f_sharing_users, a_sharing_users, paired = TRUE)
 
+
+
+############################### T-TEST FAMILIARITY ####################################
+
+#Paired t-test for familiarity
+round(mean(DATA$F_Fam), digits = 2)
+round(mean(DATA$A_Fam), digits = 2)
+t.test(DATA$F_Fam,DATA$A_Fam, paired = TRUE)
+
+
+
+############################### BOX PLOTS ####################################
+
+
+#### UEQ ###
+
+#Scales graphs are splitted for clarity
+
+#Put values in two dataframes
+UEQ <- data.frame(f_attractiveness_users, a_attractiveness_users, f_perspicuity_users, a_perspicuity_users,f_efficiency_users,a_efficiency_users)
+UEQ2 <- data.frame(f_dependability_users, a_dependability_users, f_stimulation_users, a_stimulation_users, f_novelty_users, a_novelty_users)
+
+#Boxplot for Attractiveness, Perspicuity, Efficiency
+boxplot(UEQ, names = c("F_Att","A_Att","F_Persp","A_Persp","F_Eff","A_Eff"), main = "UEQ - Attractiveness, Perspicuity, Efficiency", las = 2, ylim = c(-3,3))
+
+#Boxplot for Attractiveness, Perspicuity, Efficiency
+boxplot(UEQ2, names = c("F_Dep", "A_Dep", "F_Stim","A_Stim","F_Nov","A_Nov"), main = "UEQ - Dependability, Stimulation, Novelty", las = 2, ylim = c(-3,3))
+
+
+#### UMUX Lite ###
+
+#Put values in a dataframe
+UMUX <- data.frame(f_collaboration_users, a_collaboration_users, f_plugin_users, a_plugin_users, f_sharing_users, a_sharing_users)
+
+#Boxplot for usability scores
+boxplot(UMUX, names = c("F_Collab","A_Collab","F_Plugin","A_Plugin","F_Sharing","A_Sharing"), main = "UMUX Lite", las = 2, ylim = c(0,1))
 
 
 
